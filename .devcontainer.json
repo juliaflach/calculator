@@ -1,0 +1,50 @@
+// For format details, see https://aka.ms/devcontainer.json.
+// Example: https://github.com/Microsoft/vscode-remote-try-python
+{
+	"name": "Math Test",
+	"build": {
+		"dockerfile": "./docker/Dockerfile",
+		"context": ".",
+		"target": "math_test_base_vscode"
+	},
+	// Stop auto port forward, prevents forwarding Redis port
+	// "settings": {
+	// 	"remote.autoForwardPorts": false
+	// },
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": {
+				"python.defaultInterpreterPath": "/usr/local/bin/python3",
+				"python.linting.pylintPath": "/usr/local/bin/pylint",
+				"python.linting.pycodestylePath": "/usr/local/bin/pycodestyle"
+			},
+
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance"
+			]
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [5050, 6060],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	// "remoteUser": "vscode"
+
+	// https://code.visualstudio.com/docs/remote/devcontainerjson-reference#_image-or-dockerfile-specific-properties
+	"workspaceMount": "source=${localWorkspaceFolder},target=/var/app,type=bind,consistency=cached",
+	"workspaceFolder": "/var/app",
+
+	// An array of Docker CLI arguments that should be used when running the container. Defaults to [].
+	// --rm: will delete the container after exit.
+	// --privileged: it's for nfs mount work correctly.
+	"runArgs": [ "--rm" ]
+}
