@@ -1,0 +1,22 @@
+# When adding a library to this file, check that it is not already there.
+# If possible try to keep it sorted alphabetically and try to separate the library you need from its dependencies.
+# Always put dependencies first and always put the version of each dependency/library.
+
+itsdangerous==2.1.2
+    # via
+    #   flask
+
+Jinja2==3.1.2
+    # via
+    #   flask
+
+MarkupSafe==2.1.1
+    # via
+    #   flask
+
+Werkzeug==2.2.2
+    # via
+    #   flask
+
+flask==2.2.2
+    # via
